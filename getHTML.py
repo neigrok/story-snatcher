@@ -9,9 +9,11 @@ def getHTML():
         "D": "3137",
         "q": "текст",
     }
-    r = requests.get("http://pikabu.ru/search.php", params=params)
+
+    try:
+        r = requests.get("http://pikabu.ru/search.php", params=params)
+    except:
+        exit()
+
     print(r)
-    
     return r.text
-    
-#тест
