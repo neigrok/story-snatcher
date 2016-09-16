@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 from ver2 import getHTML
 
 
-def makefiles():
-    html = getHTML.getHTML()
+def makefiles(daysago=-1):
+    html = getHTML.getHTML(daysago)
     soup = BeautifulSoup(html, 'html.parser')
 
     headers = soup.find_all("div", {"class": "story__header-title"})
@@ -62,12 +62,15 @@ def removetags():
          line = line.replace("</p>", "")
          line = line.replace("<br>", "")
          line = line.replace("</br>", "")
+         line = line.replace("</br>", "")
+         line = line.replace("<i>", "")
+         line = line.replace("</i>", "")
          s.write(line)
     s.close()
 
-def collectworks():
+def collectworks(daysago=-1):
 
-    makefiles()
+    makefiles(daysago)
     cleanheaders()
     cleanstories()
     removetags()
