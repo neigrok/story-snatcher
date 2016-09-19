@@ -1,17 +1,33 @@
 import requests
+import time
 
-def getHTML():
+def getHTML(daysago=-1):
+
+    if daysago < 0:
+        day = tday()
+    else:
+        day = tday()-daysago
+
     params = {
-        "n": "2",
         "st": "2",
-        "r": "5",
-        "d": "3135",
-        "D": "3137",
+        "r": "4",
+        "d": str(day),
         "q": "текст",
     }
-    r = requests.get("http://pikabu.ru/search.php", params=params)
+
+    try:
+        r = requests.get("http://pikabu.ru/search.php", params=params)
+    except:
+        exit(322)
+
     print(r)
-    
+    print("day #" + str(day))
     return r.text
-    
-#тест
+
+def tday():
+    now = time.time()
+    then = time.mktime((2008, 1, 1, 0, 0, 0, 0, 0, 0))
+
+    right = now - then
+    days = int(right / 60 / 60 / 24)
+    return days
