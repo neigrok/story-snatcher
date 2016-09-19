@@ -10,8 +10,8 @@ def makefiles(daysago=-1):
     headers = soup.find_all("div", {"class": "story__header-title"})
     stories = soup.find_all("div", {"class": "b-story__content b-story__content_type_text"})
 
-    h = open("headers", mode="w")
-    s = open("stories", mode="w")
+    h = open("headers.txt", mode="w", encoding="UTF-8")
+    s = open("stories1.txt", mode="w", encoding="UTF-8")
 
     for header in headers:
        h.write(str(header))
@@ -24,10 +24,10 @@ def makefiles(daysago=-1):
 
 def cleanheaders():
 
-    h = open("headers", mode="r")
+    h = open("headers.txt", mode="r", encoding="UTF-8")
     lines = h.readlines()
     h.close()
-    h = open("headers", mode="w")
+    h = open("headers.txt", mode="w", encoding="UTF-8")
     headers = ''.join(lines)
     for header in headers.split("</a>"):
        if "_blank\"" in header:
@@ -36,10 +36,10 @@ def cleanheaders():
 
 def cleanstories():
 
-    s = open("stories", mode="r")
+    s = open("stories1.txt", mode="r", encoding="UTF-8")
     lines = s.readlines()
     s.close()
-    s = open("stories", mode="w")
+    s = open("stories1.txt", mode="w", encoding="UTF-8")
     headers = ''.join(lines)
     for header in headers.split("</div>"):
         if "data-expanded=\"1\"" in header:
@@ -48,11 +48,11 @@ def cleanstories():
 
 def removetags():
 
-    s = open("stories", mode="r")
+    s = open("stories1.txt", mode="r", encoding="UTF-8")
     lines = s.readlines()
     s.close()
 
-    s = open("stories", mode="w")
+    s = open("stories1.txt", mode="w", encoding="UTF-8")
     for line in lines:
          line = line.replace("</p><p><br/></p><p>", "\n")
          line = line.replace("</p><p>", "\n")
@@ -75,14 +75,14 @@ def collectworks(daysago=-1):
     cleanstories()
     removetags()
 
-    h = open("headers", mode="r")
+    h = open("headers.txt", mode="r", encoding="UTF-8")
     lines = h.readlines()
     h.close()
 
     headers = ''.join(lines)
     headersarr = [header.replace('\n', '') for header in headers.split(">") if header != '']
 
-    s = open("stories", mode="r")
+    s = open("stories1.txt", mode="r", encoding="UTF-8")
     lines = s.readlines()
     s.close()
 

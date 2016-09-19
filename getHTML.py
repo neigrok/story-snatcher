@@ -12,7 +12,6 @@ def getHTML(daysago=-1):
         "st": "2",
         "r": "4",
         "d": str(day),
-        "D": "3180",
         "q": "текст",
     }
 
@@ -22,7 +21,7 @@ def getHTML(daysago=-1):
         exit(322)
 
     print(r)
-    r.url
+    print("day #" + str(day))
     return r.text
 
 def tday():

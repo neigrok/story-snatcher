@@ -1,13 +1,11 @@
-from ver2 import parsev2
-
 class Story:
 
-    """Class for stories. Each story has header + body parsed from html"""
+    """Class for stories. Each story has header + body parsed from dictionary"""
 
     global stories
 
     def __init__(self, header=None, body=None):
-        self.header = header
+        self.header = header.replace("\"", "\'") #replace for windows
         self.body = body
 
     def getheader(self):
