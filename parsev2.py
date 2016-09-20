@@ -14,6 +14,7 @@ def makefiles(daysago=-1):
 
     for header in headers:
         h.write(str(header))
+        print(header)
 
     for story in stories:
         s.write(str(story))

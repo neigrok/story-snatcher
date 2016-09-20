@@ -1,8 +1,9 @@
 import storyClass
-import parsev2
 import os
+from ver3 import parseV3
 
-storyClass.Story.initstories(parsev2.collectworks())
+stories = parseV3.collectworks()
+storyClass.Story.initstories(dict=stories)
 if not os.path.exists('Stories/'):
     os.makedirs('Stories/')
 for story in storyClass.Story.stories:
