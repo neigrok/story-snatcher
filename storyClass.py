@@ -5,7 +5,10 @@ class Story:
     global stories
 
     def __init__(self, header=None, body=None):
-        self.header = header.replace("\"", "\'") #replace for windows
+        formatted = header.replace("\"", "\'") #replace for windows
+        formatted = formatted.replace("?", "777") #replace for windows
+        formatted = formatted.replace("*", "") #replace for windows
+        self.header = formatted
         self.body = body
 
     def getheader(self):
