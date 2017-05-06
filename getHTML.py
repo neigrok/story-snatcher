@@ -20,6 +20,7 @@ def getHTML(daysago=-1):
         r = requests.get("http://pikabu.ru/search.php", params=params)
     except:
         exit(322)
+    print(r.url)
 
     print(r)
     print("day #" + str(day))

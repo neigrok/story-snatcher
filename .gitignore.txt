@@ -1,4 +1,0 @@
-*.txt
-*.pyc
-__pycache__
-Stories

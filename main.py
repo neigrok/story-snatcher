@@ -1,13 +1,7 @@
-import storyClass
-import os
-from ver3 import parseV3
+from story_snatcher.getHTML import getHTML
+from story_snatcher.parse import parse, write
 
-stories = parseV3.collectworks()
-storyClass.Story.initstories(dict=stories)
-if not os.path.exists('Stories/'):
-    os.makedirs('Stories/')
-for story in storyClass.Story.stories:
-        f = open('Stories/' + story.getheader() + ".txt", mode="w", encoding="UTF-8")
-        f.write(story.getbody())
-        f.flush()
-        f.close()
+if __name__ == '__main__':
+    html = getHTML()
+    stories = parse(html)
+    write('stories.csv', stories)
